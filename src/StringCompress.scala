@@ -18,7 +18,7 @@ class StringCompress {
       }
     }
     if(l.nonEmpty)
-      Compress(l drop 1, 1, l(0))
+      Compress(l drop 1, 1, l.head)
   }
 
   def main(args: Array[String]){
