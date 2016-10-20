@@ -3,24 +3,25 @@
   */
 class StringCompress {
 
-  def compress(s1 : List[Char], s2 : List[Char], acc : List[Char]) : Unit = {
-    (s1, s2) match {
-      case (x1 :: xs, y1 :: ys) =>
-        if(x1 == y1)
-          compress(xs, ys, x1 :: acc)
-        else{
-          println(acc.length + " " + acc.mkString.reverse)
-          println(s1.length + " " + s1.mkString)
-          println(s2.length + " " + s2.mkString)
-        }
-      case(_, Nil) | (Nil, _) =>
-        println(acc.length + " " + acc.mkString.reverse)
-        println(s1.length + " " + s1.mkString)
-        println(s2.length + " " + s2.mkString)
+  def Compress(l : List[Char]) : Unit = {
+    def Compress(l : List[Char], count : Int, ch : Char) : Unit = {
+      l match {
+        case (x :: xs) =>
+          if (ch == x)
+            Compress(xs, count + 1, ch)
+          else{
+            println(ch + "" + (if(count == 1) "" else count))
+            Compress(xs, 1, x)
+          }
+        case Nil =>
+          println(ch + "" + (if(count == 1) "" else count))
+      }
     }
+    if(l.nonEmpty)
+      Compress(l drop 1, 1, l(0))
   }
 
-  def main(args: Array[String]): Unit = {
-    compress(readLine().toList, readLine().toList, List())
+  def main(args: Array[String]){
+    Compress(readLine().toList)
   }
 }
