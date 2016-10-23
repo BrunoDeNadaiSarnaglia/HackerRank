@@ -26,12 +26,13 @@ class ListGcd {
   }
 
   def main(args: Array[String]): Unit = {
-    val n = readInt()
-    var num1 = GroupInTwo(readLine())
-    for (i <- 2 to n){
-      num1 = Gcd(num1, GroupInTwo(readLine()))
-    }
-    println(num1.flatMap(a => List(a._1, a._2)).mkString(" "))
+    println(
+      (1 to readInt())
+        .map(_ => GroupInTwo(readLine()))
+        .toList
+        .reduce((l1, l2) => Gcd(l1, l2))
+        .flatMap(a => List(a._1, a._2))
+        .mkString(" "))
   }
 
 
