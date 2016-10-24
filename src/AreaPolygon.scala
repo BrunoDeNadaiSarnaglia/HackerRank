@@ -4,7 +4,7 @@
 class AreaPolygon {
 
   def area(p1 : (Double, Double), p2: (Double, Double), p3 : (Double, Double)) : Double = {
-    Math.abs((p1._1*(p2._2 - p3._2) + p2._1*(p3._2 - p1._2) + p3._1*(p1._2 - p2._2)) / 2)
+    (p1._1*(p2._2 - p3._2) + p2._1*(p3._2 - p1._2) + p3._1*(p1._2 - p2._2)) / 2.0
   }
 
   def main(args : Array[String]) ={
